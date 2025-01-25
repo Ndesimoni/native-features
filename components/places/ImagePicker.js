@@ -6,6 +6,7 @@ import {
 import React, { useState } from "react";
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../constant/colors";
+import OutlinedButton from "../UI/OutlinedButton";
 
 const ImagePicker = () => {
   const [pickImage, setPickImage] = useState();
@@ -40,7 +41,7 @@ const ImagePicker = () => {
       quality: 0.5,
     });
 
-    console(image.assets[0]);
+    console.log(image.assets[0]);
     setPickImage(image.assets[0].uri);
   }
 
@@ -57,7 +58,9 @@ const ImagePicker = () => {
   return (
     <View>
       <View style={styles.imagePreview}>{imagePreview}</View>
-      <Button title="Take Image" onPress={takeImageHandler} />
+      <OutlinedButton icon="camera" onPress={takeImageHandler}>
+        Take Photo
+      </OutlinedButton>
     </View>
   );
 };
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.primary100,
     borderRadius: 4,
+    overflow: "hidden",
   },
   image: {
     width: "100%",
